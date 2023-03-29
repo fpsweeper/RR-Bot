@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "@metaplex-foundation/js": "^0.17.5",
+    "@metaplex-foundation/mpl-token-metadata": "^2.5.1",
+    "@solana/spl-token": "^0.3.5",
+    "@solana/web3.js": "^1.63.1",
+    "discord.js": "^14.5.0",
+    "dotenv": "^16.0.3",
+    "mysql2": "^3.2.0",
+    "nodemon": "^2.0.20",
+    "pg": "^8.8.0",
+    "ramda": "^0.28.0",
+    "xhr2": "^0.2.1"
+  },
+  "name": "dc-bot-js",
+  "version": "1.0.0",
+  "main": "commands.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dcbot.js",
+    "devstart": "nodemon dcbot.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
