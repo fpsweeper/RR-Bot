@@ -57,7 +57,7 @@ const rest = new REST({ version: '10' }).setToken(token);
 // ************************************************************ //
 client.on('interactionCreate', async interaction => {
 	let member = interaction.guild.members.cache.get(interaction.user.id)
-	let hasRole = member.roles.cache.some(role => role.name === 'PPC House')
+	let hasRole = member.roles.cache.some(role => role.name === 'RZ Boss')
 
 	if (interaction.isCommand()){
 		await interaction.deferReply({ ephemeral: true }).catch(err => {});
@@ -111,7 +111,7 @@ client.on('interactionCreate', async interaction => {
 													embed1 = embed55(res)
 												}
 												embed1.setTitle(client.guilds.cache.get(interaction.guild.id).name + ' Dashboard')
-													.setDescription('Panther House helps you manage and organise raiding contests, with a new concept called Raiding Runs')
+													.setDescription('RevengerZ helps you manage and organise raiding contests, with a new concept called Raiding Runs')
 												embed1.addFields({ name: 'Create RR', value: codeBlock('yaml', "Create a new Raiding Run") , inline: false })
 												embed1.addFields({ name: 'RR Details', value: codeBlock('yaml',"Get Your RR Details"), inline: false })
 												embed1.addFields({ name: 'RR Leaderboard', value: codeBlock('yaml',"Get The Leaderboard of a Specific RR"), inline: false })
@@ -164,7 +164,7 @@ client.on('interactionCreate', async interaction => {
 						embed1 = embed55(res)
 					}
 				embed1.setTitle(client.guilds.cache.get(interaction.guild.id).name + ' Dashboard')
-				embed1.setDescription('You haven\'t "*PPC House*" role')
+				embed1.setDescription('You haven\'t "*RZ Boss*" role')
 				await interactionReply(embed1, interaction, null);
 				})
 			}
@@ -282,7 +282,7 @@ client.on('interactionCreate', async interaction => {
 					.addComponents(
 						new ButtonBuilder()
 							.setLabel('Register Now!')
-							.setURL("https://panther-house.web.app")
+							.setURL("https://revengerz.xyz")
 							.setStyle(ButtonStyle.Link))
 
 							getProject(interaction.guild.id).then(async res => {
@@ -295,7 +295,7 @@ client.on('interactionCreate', async interaction => {
 								}
 								embed1.setTitle('How to Register ?')
 									.setThumbnail('https://cdn-icons-png.flaticon.com/512/5836/5836184.png')
-									.setDescription('1- Head to https://panther-house.web.app\n'+
+									.setDescription('1- Head to https://revengerz.xyz\n'+
 													'2- Connect you wallet\n'+
 													'3- Go to your profile\n'+
 													'4- Link your discord and twitter accounts')
@@ -425,7 +425,7 @@ client.on('interactionCreate', async interaction => {
 									.addComponents(
 										new ButtonBuilder()
 											.setLabel('Register Now!')
-											.setURL("https://panther-house.web.app")
+											.setURL("https://revengerz.xyz")
 											.setStyle(ButtonStyle.Link))
 							getProject(interaction.guild.id).then(async res => {
 												let embed1 = null
@@ -437,7 +437,7 @@ client.on('interactionCreate', async interaction => {
 												}
 												embed1.setTitle('You Are Not Registered!')
 													.setThumbnail('https://cdn-icons-png.flaticon.com/512/5836/5836184.png')
-													.setDescription('1- Head to https://panther-house.web.app\n'+
+													.setDescription('1- Head to https://revengerz.xyz\n'+
 																	'2- Connect you wallet\n'+
 																	'3- Go to your profile\n'+
 																	'4- Link your discord and twitter accounts')
@@ -670,7 +670,7 @@ client.on('interactionCreate', async interaction => {
 									.addComponents(
 										new ButtonBuilder()
 											.setLabel('Register Now!')
-											.setURL("https://panther-house.web.app")
+											.setURL("https://revengerz.xyz")
 											.setStyle(ButtonStyle.Link))
 							getProject(interaction.guild.id).then(async res => {
 												let embed1 = null
@@ -682,7 +682,7 @@ client.on('interactionCreate', async interaction => {
 												}
 								embed1.setTitle('You Are Not Registered!')
 									.setThumbnail('https://cdn-icons-png.flaticon.com/512/5836/5836184.png')
-									.setDescription('1- Head to https://panther-house.web.app\n'+
+									.setDescription('1- Head to https://revengerz.xyz\n'+
 													'2- Connect you wallet\n'+
 													'3- Go to your profile\n'+
 													'4- Link your discord and twitter accounts')
@@ -1324,14 +1324,14 @@ client.on('interactionCreate', async interaction => {
 
 client.on('guildCreate', async (guild) => {
 
-	let role = guild.roles.cache.find(role => role.name === "PPC House");
+	let role = guild.roles.cache.find(role => role.name === "RZ Boss");
 
 	if(role === undefined)
 	{
 		await guild.roles.create({
-			name: 'PPC House',
-			color: '#fc72ed',
-			reason: 'PPC House Role',
+			name: 'RZ Boss',
+			color: '#40444a',
+			reason: 'RZ Boss Role',
 		  })
 			.then(async role => {
 				let owner = await guild.fetchOwner()
@@ -1345,7 +1345,7 @@ client.on('guildCreate', async (guild) => {
 
 client.on('messageCreate', async msg =>{
 	let member = msg.guild.members.cache.get(msg.author.id)
-	let hasRole = member.roles.cache.some(role => role.name === 'PPC House')
+	let hasRole = member.roles.cache.some(role => role.name === 'RZ Boss')
 	if(msg.content.includes('!raid')){
 		if(hasRole){
 			var sql = "SELECT * from rr_mission where raid_link = '" + msg.content.replace('!raid ','') +"' and dc_id = '" + msg.guild.id + "';";
@@ -1514,22 +1514,22 @@ client.login(token);
 const embed = () => {
 	return new EmbedBuilder()
 							//.setTitle('PPC Bot')
-							.setColor("#fc72ed")
-							.setImage("https://pbs.twimg.com/profile_banners/1494245749168738309/1679434326/1500x500")
+							.setColor("#40444a")
+							.setImage("https://pbs.twimg.com/profile_banners/1136618210487361536/1683326122/1500x500")
 							/*.setAuthor({ name: 'PPC Bot'
 							, iconURL: 'https://bafybeidcylfop5rh4ngipj5s2ziydbyidpeuttw2j3qoioasz2wmv2xfsa.ipfs.w3s.link/Pink%20Logo%20BG%20Removed.png'})*/
-							.setFooter({ text: 'FpSweeper | Penthouse Panther Club'});
+							.setFooter({ text: 'FpSweeper | RevengerZ'});
 	
 }
 
 const embed55 = (res) => {
 	return new EmbedBuilder()
 		
-		.setColor("#fc72ed")
+		.setColor("#40444a")
 		.setImage(res.profilecoverlink)
 							/*.setAuthor({ name: 'PPC Bot'
 							, iconURL: 'https://bafybeidcylfop5rh4ngipj5s2ziydbyidpeuttw2j3qoioasz2wmv2xfsa.ipfs.w3s.link/Pink%20Logo%20BG%20Removed.png'})*/
-		.setFooter({ text: 'FpSweeper | Penthouse Panther Club'});
+		.setFooter({ text: 'FpSweeper | RevengerZ'});
 	
 }
 
