@@ -4,6 +4,7 @@ const { clientId, token  } = require('./config.json');
 const { REST, Routes, SelectMenuBuilder } = require('discord.js');
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder  } = require('discord.js');
 
+console.log('rrrrrrrrrrrrrrr')
 const XMLHttpRequest = require('xhr2');
 const fs = require('node:fs');
 const commands = [];
@@ -14,10 +15,10 @@ const { resolve } = require('node:path');
 const { reject } = require('ramda');
 
 var con = mysql.createConnection({
-  host: "vultr-prod-1912ac8e-98b1-47c3-8308-65bf784c6fd1-vultr-prod-2f6d.vultrdb.com",
-  user: "vultradmin",
-  password: "AVNS_sw6Ef-HtZKjjdMsBVaA",
-  port: "16751",
+  host: "ls-25e48440f1e5122125b59df1847a9c9c7d06e1c0.cagodxgzv1qf.eu-central-1.rds.amazonaws.com",
+  user: "dbmasteruser",
+  password: "T]EX{q5R5p1mVn!z<-=;zPY}u!ASK4A<",
+  port: "3306",
   database: "defaultdb"
 });
 
@@ -410,7 +411,7 @@ client.on('interactionCreate', async interaction => {
 		}else if(interaction.customId === 'claimr2ebtn'){
 			await interaction.deferReply({ ephemeral: true }).catch(err => {});
 			try{
-				var sql = "SELECT * FROM users where dcid = '" + interaction.user.id + "'" ;
+				var sql = "SELECT * FROM users where dcid = '" + interaction.user.id + "' and twid is not null" ;
 
 				con.query(sql, async (err, result) => {
 					if (err) {
@@ -445,7 +446,7 @@ client.on('interactionCreate', async interaction => {
 											})
 						}else{
 								var sql = "SELECT * from raiding_run where rr_name = '" + interaction.message.embeds[0].fields[0].value +"' and dc_id = '" + interaction.guild.id + "';";
-
+								console.log(sql)
 								con.query(sql, async (err, result2) => {
 									if (err) {
 										await interaction.deferReply({ ephemeral: true }).catch(err => {});
@@ -489,13 +490,13 @@ client.on('interactionCreate', async interaction => {
 															const url = "https://api.twitter.com/2/tweets/"+interaction.message.embeds[0].fields[4].value.split('/')[5].split('?')[0]+"/liking_users";
 															var initialArray = null;
 															xmlHttp.open( "GET", url ); // false for synchronous request
-															xmlHttp.setRequestHeader("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAANy2iQEAAAAAC0uGQVyTbafwUKWxMiV4ZkUwido%3D5USbfVyqj25IcxRcEBVO6QjTt8W6WcM3NwTaMv5a8jqwRHVjVk");
+															xmlHttp.setRequestHeader("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAFjJkwEAAAAAlZKCY9f%2FX%2B2aKqYn1Ha5TUtPvok%3Dc5CTN8zI6uuuhg7XG3i2uUpDSV5edhdDmTYhJnUf5GE3cidyvS");
 															
 															xmlHttp.send();
 
 															//****************** Likes ***********************/
 															xmlHttp.addEventListener("load", function() {
-
+																console.log(result[0].twid , ' ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
 																initialArray = JSON.parse(xmlHttp.response);
 																var i = 0;
 																if(initialArray.data){
@@ -514,7 +515,7 @@ client.on('interactionCreate', async interaction => {
 																const url = "https://api.twitter.com/2/tweets/"+interaction.message.embeds[0].fields[4].value.split('/')[5].split('?')[0]+"/retweeted_by";
 																
 																xmlHttp.open( "GET", url ); // false for synchronous request
-																xmlHttp.setRequestHeader("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAANy2iQEAAAAAC0uGQVyTbafwUKWxMiV4ZkUwido%3D5USbfVyqj25IcxRcEBVO6QjTt8W6WcM3NwTaMv5a8jqwRHVjVk");
+																xmlHttp.setRequestHeader("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAFjJkwEAAAAAlZKCY9f%2FX%2B2aKqYn1Ha5TUtPvok%3Dc5CTN8zI6uuuhg7XG3i2uUpDSV5edhdDmTYhJnUf5GE3cidyvS");
 																
 																xmlHttp.send();
 
@@ -737,7 +738,7 @@ client.on('interactionCreate', async interaction => {
 																	var xmlHttp = new XMLHttpRequest();
 																	const url = "https://api.twitter.com/2/users/" + result[0].twid + "/tweets?exclude=retweets,replies&max_results=100";
 																	xmlHttp.open( "GET", url ); // false for synchronous request
-																	xmlHttp.setRequestHeader("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAANy2iQEAAAAAC0uGQVyTbafwUKWxMiV4ZkUwido%3D5USbfVyqj25IcxRcEBVO6QjTt8W6WcM3NwTaMv5a8jqwRHVjVk");
+																	xmlHttp.setRequestHeader("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAFjJkwEAAAAAlZKCY9f%2FX%2B2aKqYn1Ha5TUtPvok%3Dc5CTN8zI6uuuhg7XG3i2uUpDSV5edhdDmTYhJnUf5GE3cidyvS");
 																	
 																	xmlHttp.send();
 
@@ -1666,7 +1667,7 @@ const checkUserComment = async (tweetid, usertwitterid) => {
 	var xmlHttp = new XMLHttpRequest();
 	var url = "https://api.twitter.com/2/tweets?ids="+tweetid+"&tweet.fields=author_id,conversation_id,created_at,in_reply_to_user_id,referenced_tweets&expansions=author_id,in_reply_to_user_id,referenced_tweets.id&user.fields=name,username";
 	xmlHttp.open( "GET", url ); // false for synchronous request
-	xmlHttp.setRequestHeader("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAANy2iQEAAAAAC0uGQVyTbafwUKWxMiV4ZkUwido%3D5USbfVyqj25IcxRcEBVO6QjTt8W6WcM3NwTaMv5a8jqwRHVjVk");
+	xmlHttp.setRequestHeader("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAFjJkwEAAAAAlZKCY9f%2FX%2B2aKqYn1Ha5TUtPvok%3Dc5CTN8zI6uuuhg7XG3i2uUpDSV5edhdDmTYhJnUf5GE3cidyvS");
 	xmlHttp.send();
 	xmlHttp.addEventListener("load", async function() {
 		var initialArray = JSON.parse(xmlHttp.response);
@@ -1676,7 +1677,7 @@ const checkUserComment = async (tweetid, usertwitterid) => {
 			xmlHttp = new XMLHttpRequest();
 			const url = "https://api.twitter.com/2/tweets/search/recent?query=conversation_id:"+initialArray.data[0].conversation_id+"&tweet.fields=in_reply_to_user_id,author_id,created_at,conversation_id";
 			xmlHttp.open( "GET", url ); // false for synchronous request
-			xmlHttp.setRequestHeader("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAANy2iQEAAAAAC0uGQVyTbafwUKWxMiV4ZkUwido%3D5USbfVyqj25IcxRcEBVO6QjTt8W6WcM3NwTaMv5a8jqwRHVjVk");
+			xmlHttp.setRequestHeader("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAFjJkwEAAAAAlZKCY9f%2FX%2B2aKqYn1Ha5TUtPvok%3Dc5CTN8zI6uuuhg7XG3i2uUpDSV5edhdDmTYhJnUf5GE3cidyvS");
 			xmlHttp.send();
 			xmlHttp.addEventListener("load", function() {
 
