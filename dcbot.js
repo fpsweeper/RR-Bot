@@ -17,7 +17,7 @@ const { reject } = require('ramda');
 var con = mysql.createConnection({
   host: "ls-25e48440f1e5122125b59df1847a9c9c7d06e1c0.cagodxgzv1qf.eu-central-1.rds.amazonaws.com",
   user: "dbmasteruser",
-  password: "T]EX{q5R5p1mVn!z<-=;zPY}u!ASK4A<",
+  password: "",
   port: "3306",
   database: "defaultdb"
 });
