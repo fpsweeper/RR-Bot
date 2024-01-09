@@ -490,7 +490,7 @@ client.on('interactionCreate', async interaction => {
 															const url = "https://api.twitter.com/2/tweets/"+interaction.message.embeds[0].fields[4].value.split('/')[5].split('?')[0]+"/liking_users";
 															var initialArray = null;
 															xmlHttp.open( "GET", url ); // false for synchronous request
-															xmlHttp.setRequestHeader("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAFjJkwEAAAAAlZKCY9f%2FX%2B2aKqYn1Ha5TUtPvok%3Dc5CTN8zI6uuuhg7XG3i2uUpDSV5edhdDmTYhJnUf5GE3cidyvS");
+															xmlHttp.setRequestHeader("Authorization", "Bearer <Set Yours>");
 															
 															xmlHttp.send();
 
@@ -515,7 +515,7 @@ client.on('interactionCreate', async interaction => {
 																const url = "https://api.twitter.com/2/tweets/"+interaction.message.embeds[0].fields[4].value.split('/')[5].split('?')[0]+"/retweeted_by";
 																
 																xmlHttp.open( "GET", url ); // false for synchronous request
-																xmlHttp.setRequestHeader("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAFjJkwEAAAAAlZKCY9f%2FX%2B2aKqYn1Ha5TUtPvok%3Dc5CTN8zI6uuuhg7XG3i2uUpDSV5edhdDmTYhJnUf5GE3cidyvS");
+																xmlHttp.setRequestHeader("Authorization", "Bearer <Set Yours>");
 																
 																xmlHttp.send();
 
@@ -738,7 +738,7 @@ client.on('interactionCreate', async interaction => {
 																	var xmlHttp = new XMLHttpRequest();
 																	const url = "https://api.twitter.com/2/users/" + result[0].twid + "/tweets?exclude=retweets,replies&max_results=100";
 																	xmlHttp.open( "GET", url ); // false for synchronous request
-																	xmlHttp.setRequestHeader("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAFjJkwEAAAAAlZKCY9f%2FX%2B2aKqYn1Ha5TUtPvok%3Dc5CTN8zI6uuuhg7XG3i2uUpDSV5edhdDmTYhJnUf5GE3cidyvS");
+																	xmlHttp.setRequestHeader("Authorization", "Bearer <Set Yours>");
 																	
 																	xmlHttp.send();
 
@@ -1667,7 +1667,7 @@ const checkUserComment = async (tweetid, usertwitterid) => {
 	var xmlHttp = new XMLHttpRequest();
 	var url = "https://api.twitter.com/2/tweets?ids="+tweetid+"&tweet.fields=author_id,conversation_id,created_at,in_reply_to_user_id,referenced_tweets&expansions=author_id,in_reply_to_user_id,referenced_tweets.id&user.fields=name,username";
 	xmlHttp.open( "GET", url ); // false for synchronous request
-	xmlHttp.setRequestHeader("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAFjJkwEAAAAAlZKCY9f%2FX%2B2aKqYn1Ha5TUtPvok%3Dc5CTN8zI6uuuhg7XG3i2uUpDSV5edhdDmTYhJnUf5GE3cidyvS");
+	xmlHttp.setRequestHeader("Authorization", "Bearer <Set Yours>");
 	xmlHttp.send();
 	xmlHttp.addEventListener("load", async function() {
 		var initialArray = JSON.parse(xmlHttp.response);
@@ -1677,7 +1677,7 @@ const checkUserComment = async (tweetid, usertwitterid) => {
 			xmlHttp = new XMLHttpRequest();
 			const url = "https://api.twitter.com/2/tweets/search/recent?query=conversation_id:"+initialArray.data[0].conversation_id+"&tweet.fields=in_reply_to_user_id,author_id,created_at,conversation_id";
 			xmlHttp.open( "GET", url ); // false for synchronous request
-			xmlHttp.setRequestHeader("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAFjJkwEAAAAAlZKCY9f%2FX%2B2aKqYn1Ha5TUtPvok%3Dc5CTN8zI6uuuhg7XG3i2uUpDSV5edhdDmTYhJnUf5GE3cidyvS");
+			xmlHttp.setRequestHeader("Authorization", "Bearer <Set Yours>");
 			xmlHttp.send();
 			xmlHttp.addEventListener("load", function() {
 
