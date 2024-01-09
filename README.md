@@ -7,6 +7,7 @@ defined by the admin.
 __**How to install ?**__
 * npm install --force
 * Add config.json file with two properties: *clientId* and *token* , of you bot created in your dev portal in discord
+* Add your bearer in dcbot.js
 * Create the database and change the connection credentials within dcbot.js file
 * npm start
 * Invite the bot
